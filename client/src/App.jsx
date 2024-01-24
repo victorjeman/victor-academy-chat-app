@@ -9,11 +9,13 @@ import { ChatStartDiscussionModal } from './components/chat-start-discussion-mod
 import './App.css'
 
 export default function App() {
-  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isModalVisible, setIsModalVisible] = useState(true)
 
   return (
     <>
-      {isModalVisible && <ChatStartDiscussionModal />}
+      {isModalVisible && (
+        <ChatStartDiscussionModal onClose={setIsModalVisible} />
+      )}
 
       <ChatLayout
         controls={

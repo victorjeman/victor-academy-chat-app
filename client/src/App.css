@@ -17,6 +17,7 @@ body,
 
 body {
   margin: 0;
+  position: relative;
 }
 
 .chat-layout {
@@ -74,4 +75,31 @@ body {
 .chat-controls-btn.is-active {
   background-color: blue;
   color: orange;
+}
+
+/* MODAL */
+.chat-modal {
+  border: var(--border-md);
+  padding: var(--space-md);
+  background-color: #fff;
+
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 500px;
+  width: 100%;
+}
+
+.chat-modal-close-button {
+  background-color: transparent;
+  border: 2px solid red;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.chat-modal-close-button:hover {
+  background-color: red;
+  color: #fff;
 }

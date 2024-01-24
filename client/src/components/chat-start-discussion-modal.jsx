@@ -8,14 +8,21 @@ import { ChatStartDiscussionButton } from './chat-start-discussion-button'
  * 4. Voi transmite mai departe functia catre componenta ChatStartDiscussionButton.
  */
 
-export function ChatStartDiscussionModal() {
+export function ChatStartDiscussionModal({ onClose }) {
   return (
-    <div>
+    <div className="chat-modal">
       <h2>Select the people you want to talk to</h2>
 
       <ChatContactList />
 
       <ChatStartDiscussionButton />
+
+      <button
+        className="chat-modal-close-button"
+        onClick={() => onClose(false)}
+      >
+        Close
+      </button>
     </div>
   )
 }
