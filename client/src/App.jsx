@@ -6,15 +6,21 @@ import { ChatLayout } from './components/chat-layout'
 import { ChatMessageList } from './components/chat-message-list'
 import { ChatStartDiscussionModal } from './components/chat-start-discussion-modal'
 
+import { CONTACTS } from './contacts/contacts'
+
 import './App.css'
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(true)
+  const [contacts] = useState(CONTACTS)
 
   return (
     <>
       {isModalVisible && (
-        <ChatStartDiscussionModal onClose={setIsModalVisible} />
+        <ChatStartDiscussionModal
+          onClose={setIsModalVisible}
+          contacts={contacts}
+        />
       )}
 
       <ChatLayout

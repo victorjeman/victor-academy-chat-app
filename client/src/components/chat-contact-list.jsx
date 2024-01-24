@@ -6,12 +6,18 @@ import { ChatContact } from './chat-contact'
  * 3. O o sa afisez fiecare contact folosind componenta ChatContact
  */
 
-export function ChatContactList() {
+export function ChatContactList({ contacts }) {
   return (
     <div>
       <h2>My contact list</h2>
 
-      <ChatContact />
+      <ul>
+        {contacts.map((contact) => (
+          <li key={contact.id}>
+            <ChatContact contact={contact} />
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
