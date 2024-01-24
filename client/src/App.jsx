@@ -1,12 +1,15 @@
-import { ChatApp } from './components/chat-app'
+import { ChatControls } from './components/chat-controls'
+import { ChatDiscussionList } from './components/chat-discussion-list'
+import { ChatMessageList } from './components/chat-message-list'
+import { ChatStartDiscussionModal } from './components/chat-start-discussion-modal'
 
-import './App.css'
-function App() {
+export default function App() {
   return (
-    <>
-      <ChatApp />
-    </>
+    <div>
+      <ChatStartDiscussionModal />
+      <ChatControls />
+      <ChatDiscussionList />
+      <ChatMessageList />
+    </div>
   )
 }
-
-export default App

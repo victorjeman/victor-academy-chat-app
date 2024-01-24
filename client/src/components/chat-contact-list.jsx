@@ -1,16 +1,17 @@
 import { ChatContact } from './chat-contact'
 
-export function ChatContactList({ contacts }) {
+/*
+ * 1. O sa primesc lista de contacte prin props. O sa fie un array "contacts".
+ * 2. O sa traversez lista de contacte folosind "map". contacts.map(() => {})
+ * 3. O o sa afisez fiecare contact folosind componenta ChatContact
+ */
+
+export function ChatContactList() {
   return (
-    <div className="chat-contact-list">
-      {contacts.map((contact) => (
-        <div
-          key={contact.id}
-          className="chat-contact-list-item"
-        >
-          <ChatContact contact={contact} />
-        </div>
-      ))}
+    <div>
+      <h2>My contact list</h2>
+
+      <ChatContact />
     </div>
   )
 }

@@ -1,15 +1,15 @@
 import { ChatMessage } from './chat-message'
 
-export function ChatMessageList({ messages }) {
-  console.log('messages: ', messages)
+/*
+ * 1. Voi primi lista de message in props.
+ * 2. Voi traversa lista de message folosind "map".
+ * 3. Voi afisa fiecare message folosind componenta ChatMessage.
+ */
+
+export function ChatMessageList() {
   return (
-    <div className="chat-message-list">
-      {messages.map((message) => (
-        <ChatMessage
-          key={message.id}
-          message={message}
-        />
-      ))}
+    <div>
+      <ChatMessage />
     </div>
   )
 }
