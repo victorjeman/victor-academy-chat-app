@@ -1,12 +1,36 @@
-/*
- * 1. Aici voi un button care va afisa lista de contacte intr-un modal.
- * 2. Pe viitor ar putea fi alte butoane cu actiuuni diferite.
- */
-
-export function ChatControls() {
+export function ChatControls({ setIsModalVisible, isModalVisible }) {
   return (
-    <div>
-      <button>Show contact list</button>
+    <div className="chat-controls">
+      <button
+        className={`chat-controls-btn ${
+          isModalVisible === false ? 'is-active' : ''
+        }`}
+        onClick={() => {
+          setIsModalVisible(false)
+        }}
+      >
+        Hide contact list
+      </button>
+
+      <button
+        className={`chat-controls-btn ${
+          isModalVisible === true ? 'is-active' : ''
+        }`}
+        onClick={() => {
+          setIsModalVisible(true)
+        }}
+      >
+        Show contact list
+      </button>
+
+      <button
+        className="chat-controls-btn"
+        onClick={() => {
+          setIsModalVisible((prev) => !prev)
+        }}
+      >
+        Toggle contact list
+      </button>
     </div>
   )
 }

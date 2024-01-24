@@ -51,3 +51,27 @@ body {
   padding: var(--space-sm);
   flex-grow: 1;
 }
+
+/* CONTROLS */
+
+.chat-controls {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.chat-controls-btn {
+  background-color: transparent;
+  border: 2px solid blue;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.chat-controls-btn:hover {
+  background-color: blue;
+  color: #fff;
+}
+
+.chat-controls-btn.is-active {
+  background-color: blue;
+  color: orange;
+}
