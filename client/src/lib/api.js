@@ -15,3 +15,17 @@ export async function fetchContacts() {
 
   return contacts
 }
+
+export async function fetchMessages(discussionId) {
+  const endpoint = 'messages'
+  const data = await fetch(`${API_BASE}/${endpoint}`)
+  const allMessages = await data.json()
+
+  function checkDiscussionId(message) {
+    return message.discussionId === discussionId
+  }
+
+  const discussionContent = allMessages.find(checkDiscussionId)
+
+  return discussionContent?.messages
+}

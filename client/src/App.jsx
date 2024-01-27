@@ -6,10 +6,9 @@ import { ChatLayout } from './components/chat-layout'
 import { ChatMessageList } from './components/chat-message-list'
 import { ChatStartDiscussionModal } from './components/chat-start-discussion-modal'
 
-import { MESSAGES } from './constants/messages'
 import { USER } from './constants/user'
 
-import { fetchContacts, fetchDiscussions } from './lib/api'
+import { fetchContacts, fetchDiscussions, fetchMessages } from './lib/api'
 
 import './App.css'
 
@@ -20,16 +19,6 @@ export default function App() {
   const [messages, setMessages] = useState([])
   const [user] = useState(USER)
   const [activeContact, setActiveContact] = useState(null)
-
-  function loadMessages(discussionId) {
-    function checkDiscussionId(message) {
-      return message.discussionId === discussionId
-    }
-
-    const data = MESSAGES.find(checkDiscussionId)
-
-    setMessages(data?.messages)
-  }
 
   function highlightDiscussion(discussionId) {
     function checkDiscussionId(discussion) {
@@ -74,6 +63,11 @@ export default function App() {
   async function loadContacts() {
     const data = await fetchContacts()
     setContacts(data)
+  }
+
+  async function loadMessages(discussionId) {
+    const data = await fetchMessages(discussionId)
+    setMessages(data)
   }
 
   useEffect(() => {
