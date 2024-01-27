@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { ChatControls } from './components/chat-controls'
 import { ChatDiscussionList } from './components/chat-discussion-list'
@@ -8,72 +8,24 @@ import { ChatStartDiscussionModal } from './components/chat-start-discussion-mod
 
 import { USER } from './constants/user'
 
-import { fetchContacts, fetchDiscussions, fetchMessages } from './lib/api'
+import { useMessages } from './hooks/use-messages'
+import { useContacts } from './hooks/use-contacts'
+import { useDiscussions } from './hooks/use-discussions'
 
 import './App.css'
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [contacts, setContacts] = useState([])
-  const [discussions, setDiscussions] = useState([])
-  const [messages, setMessages] = useState([])
   const [user] = useState(USER)
   const [activeContact, setActiveContact] = useState(null)
 
-  function highlightDiscussion(discussionId) {
-    function checkDiscussionId(discussion) {
-      return discussion.id === discussionId
-    }
-
-    const activeDiscussion = discussions.find(checkDiscussionId)
-
-    function updateDiscussion(discussion) {
-      return {
-        ...discussion,
-        isActive: discussion.id === activeDiscussion.id,
-      }
-    }
-
-    const updatedDiscussions = discussions.map(updateDiscussion)
-
-    setDiscussions(updatedDiscussions)
-  }
-
-  function addNewDiscussion() {
-    const newDiscussionId = discussions.length + 1
-
-    const newDiscussion = {
-      id: newDiscussionId,
-      contacts: [
-        { id: user.id, name: user.name },
-        { id: activeContact.name, name: activeContact.name },
-      ],
-    }
-
-    const updatedDiscussions = [...discussions, newDiscussion]
-
-    setDiscussions(updatedDiscussions)
-  }
-
-  async function loadDiscussions() {
-    const data = await fetchDiscussions()
-    setDiscussions(data)
-  }
-
-  async function loadContacts() {
-    const data = await fetchContacts()
-    setContacts(data)
-  }
-
-  async function loadMessages(discussionId) {
-    const data = await fetchMessages(discussionId)
-    setMessages(data)
-  }
-
-  useEffect(() => {
-    loadDiscussions()
-    loadContacts()
-  }, [])
+  const { contacts } = useContacts()
+  const { messages, loadMessages } = useMessages()
+  const { discussions, setDiscussions, addNewDiscussion, highlightDiscussion } =
+    useDiscussions({
+      user,
+      activeContact,
+    })
 
   return (
     <>
