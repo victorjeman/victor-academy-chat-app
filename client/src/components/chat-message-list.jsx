@@ -1,6 +1,8 @@
+import { useChatContext } from '../hooks/use-chat-context'
 import { ChatMessage } from './chat-message'
 
-export function ChatMessageList({ messages = [] }) {
+export function ChatMessageList() {
+  const { messages } = useChatContext()
   return (
     <div>
       {messages.map((message) => (

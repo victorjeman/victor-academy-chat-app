@@ -1,34 +1,25 @@
+import { useChatContext } from '../hooks/use-chat-context'
+
 import { ChatContactList } from './chat-contact-list'
 import { ChatStartDiscussionButton } from './chat-start-discussion-button'
 
-export function ChatStartDiscussionModal({
-  onClose,
-  setActiveContact,
-  addNewDiscussion,
-  contacts,
-  activeContact,
-}) {
-  return (
+export function ChatStartDiscussionModal() {
+  const { setIsModalVisible, isModalVisible } = useChatContext()
+
+  return isModalVisible ? (
     <div className="chat-modal">
       <h2>Select the people you want to talk to</h2>
 
-      <ChatContactList
-        setActiveContact={setActiveContact}
-        contacts={contacts}
-        activeContact={activeContact}
-      />
+      <ChatContactList />
 
-      <ChatStartDiscussionButton
-        addNewDiscussion={addNewDiscussion}
-        onClose={onClose}
-      />
+      <ChatStartDiscussionButton />
 
       <button
         className="chat-modal-close-button"
-        onClick={() => onClose(false)}
+        onClick={() => setIsModalVisible(false)}
       >
         Close
       </button>
     </div>
-  )
+  ) : null
 }
