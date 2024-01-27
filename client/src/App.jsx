@@ -6,7 +6,7 @@ import { ChatLayout } from './components/chat-layout'
 import { ChatMessageList } from './components/chat-message-list'
 import { ChatStartDiscussionModal } from './components/chat-start-discussion-modal'
 
-import { CONTACTS } from './contacts/contacts'
+import { CONTACTS } from './constants/contacts'
 
 import './App.css'
 
