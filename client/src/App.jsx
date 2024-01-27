@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { ChatControls } from './components/chat-controls'
 import { ChatDiscussionList } from './components/chat-discussion-list'
@@ -7,16 +7,17 @@ import { ChatMessageList } from './components/chat-message-list'
 import { ChatStartDiscussionModal } from './components/chat-start-discussion-modal'
 
 import { CONTACTS } from './constants/contacts'
-import { DISCUSSIONS } from './constants/discussions'
 import { MESSAGES } from './constants/messages'
 import { USER } from './constants/user'
+
+import { fetchDiscussions } from './lib/api'
 
 import './App.css'
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [contacts] = useState(CONTACTS)
-  const [discussions, setDiscussions] = useState(DISCUSSIONS)
+  const [discussions, setDiscussions] = useState([])
   const [messages, setMessages] = useState([])
   const [user] = useState(USER)
   const [activeContact, setActiveContact] = useState(null)
@@ -65,6 +66,15 @@ export default function App() {
 
     setDiscussions(updatedDiscussions)
   }
+
+  async function loadDiscussions() {
+    const data = await fetchDiscussions()
+    setDiscussions(data)
+  }
+
+  useEffect(() => {
+    loadDiscussions()
+  }, [])
 
   return (
     <>
