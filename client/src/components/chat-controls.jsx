@@ -1,10 +1,10 @@
+import { clsx } from 'clsx'
+
 export function ChatControls({ setIsModalVisible, isModalVisible }) {
   return (
     <div className="chat-controls">
       <button
-        className={`chat-controls-btn ${
-          isModalVisible === false ? 'is-active' : ''
-        }`}
+        className={clsx('chat-controls-btn', !isModalVisible && 'is-active')}
         onClick={() => {
           setIsModalVisible(false)
         }}
@@ -13,9 +13,7 @@ export function ChatControls({ setIsModalVisible, isModalVisible }) {
       </button>
 
       <button
-        className={`chat-controls-btn ${
-          isModalVisible === true ? 'is-active' : ''
-        }`}
+        className={clsx('chat-controls-btn', isModalVisible && 'is-active')}
         onClick={() => {
           setIsModalVisible(true)
         }}
