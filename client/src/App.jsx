@@ -11,7 +11,7 @@ import { CONTACTS } from './contacts/contacts'
 import './App.css'
 
 export default function App() {
-  const [isModalVisible, setIsModalVisible] = useState(true)
+  const [isModalVisible, setIsModalVisible] = useState(false)
   const [contacts] = useState(CONTACTS)
 
   return (
