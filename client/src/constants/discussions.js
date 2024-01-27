@@ -9,8 +9,8 @@ export const DISCUSSIONS = [
   {
     id: 1,
     contacts: [
-      { id: 0, name: 'John Doe' },
-      { id: 5, name: 'Emily Davis' },
+      { id: 0, name: 'Emily Davis' },
+      { id: 5, name: 'Sarah Miller' },
     ],
   },
 ]

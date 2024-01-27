@@ -6,13 +6,15 @@ import { ChatLayout } from './components/chat-layout'
 import { ChatMessageList } from './components/chat-message-list'
 import { ChatStartDiscussionModal } from './components/chat-start-discussion-modal'
 
-import { CONTACTS } from './contacts/contacts'
+import { CONTACTS } from './constants/contacts'
+import { DISCUSSIONS } from './constants/discussions'
 
 import './App.css'
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [contacts] = useState(CONTACTS)
+  const [discussions] = useState(DISCUSSIONS)
 
   return (
     <>
@@ -30,7 +32,7 @@ export default function App() {
             isModalVisible={isModalVisible}
           />
         }
-        aside={<ChatDiscussionList />}
+        aside={<ChatDiscussionList discussions={discussions} />}
         main={<ChatMessageList />}
       />
     </>

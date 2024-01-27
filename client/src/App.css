@@ -103,3 +103,25 @@ body {
   background-color: red;
   color: #fff;
 }
+
+/* DISCUSSION LIST */
+.chat-discussion-list-items {
+  list-style: none;
+  padding: 0;
+}
+
+.chat-discussion-list-item {
+  margin-bottom: var(--space-sm);
+}
+
+.chat-discussion-list-button {
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid var(--color-gray);
+  padding: var(--space-sm);
+}
+
+.chat-discussion-list-button:hover {
+  background-color: blue;
+  color: #fff;
+}

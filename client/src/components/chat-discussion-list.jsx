@@ -1,21 +1,22 @@
 import { ChatDiscussionContacts } from './chat-discussion-contacts'
 
-/*
- * 1. O sa primesc lista de converastii prin props.
- * 2. Voi traversa aici lista de conversatii folosind "map".
- * 3. Pentru fiecare conversatie voi afisa lista de contacte cu care am discutat
- * 4. O sa folosesc componenta ChatDiscussionContacts unde sa transmit lista de contacte
- * 5. In interiorul componentei ChatDiscussionContacts voi concatena numele de la fiecare contact ca sa iasa o lista separate prin virgula
- */
-
-export function ChatDiscussionList() {
+export function ChatDiscussionList({ discussions }) {
   return (
-    <div>
+    <div className="chat-discussion-list">
       <h3>My discussions</h3>
 
-      <div>
-        <ChatDiscussionContacts />
-      </div>
+      <ul className="chat-discussion-list-items">
+        {discussions.map((discussion) => (
+          <li
+            key={discussion.id}
+            className="chat-discussion-list-item"
+          >
+            <button className="chat-discussion-list-button">
+              <ChatDiscussionContacts contacts={discussion.contacts} />
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
