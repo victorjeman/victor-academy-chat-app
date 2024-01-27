@@ -15,7 +15,7 @@ import './App.css'
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [contacts] = useState(CONTACTS)
-  const [discussions] = useState(DISCUSSIONS)
+  const [discussions, setDiscussions] = useState(DISCUSSIONS)
   const [messages, setMessages] = useState([])
 
   function loadMessages(discussionId) {
@@ -26,6 +26,25 @@ export default function App() {
     const data = MESSAGES.find(checkDiscussionId)
 
     setMessages(data?.messages)
+  }
+
+  function highlightDiscussion(discussionId) {
+    function checkDiscussionId(discussion) {
+      return discussion.id === discussionId
+    }
+
+    const activeDiscussion = discussions.find(checkDiscussionId)
+
+    function updateDiscussion(discussion) {
+      return {
+        ...discussion,
+        isActive: discussion.id === activeDiscussion.id,
+      }
+    }
+
+    const updatedDiscussions = discussions.map(updateDiscussion)
+
+    setDiscussions(updatedDiscussions)
   }
 
   return (
@@ -47,7 +66,9 @@ export default function App() {
         aside={
           <ChatDiscussionList
             discussions={discussions}
+            setDiscussions={setDiscussions}
             loadMessages={loadMessages}
+            highlightDiscussion={highlightDiscussion}
           />
         }
         main={<ChatMessageList messages={messages} />}

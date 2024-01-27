@@ -1,6 +1,10 @@
 import { ChatDiscussionContacts } from './chat-discussion-contacts'
 
-export function ChatDiscussionList({ discussions, loadMessages }) {
+export function ChatDiscussionList({
+  discussions,
+  loadMessages,
+  highlightDiscussion,
+}) {
   return (
     <div className="chat-discussion-list">
       <h3>My discussions</h3>
@@ -12,9 +16,12 @@ export function ChatDiscussionList({ discussions, loadMessages }) {
             className="chat-discussion-list-item"
           >
             <button
-              className="chat-discussion-list-button"
+              className={`chat-discussion-list-button ${
+                discussion.isActive ? 'chat-discussion-list-item--active' : ''
+              }`}
               onClick={() => {
                 loadMessages(discussion.id)
+                highlightDiscussion(discussion.id)
               }}
             >
               <ChatDiscussionContacts contacts={discussion.contacts} />

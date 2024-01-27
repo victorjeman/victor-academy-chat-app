@@ -114,6 +114,11 @@ body {
   margin-bottom: var(--space-sm);
 }
 
+.chat-discussion-list-item--active {
+  background-color: blue;
+  color: #fff;
+}
+
 .chat-discussion-list-button {
   width: 100%;
   cursor: pointer;
