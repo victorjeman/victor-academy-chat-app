@@ -7,6 +7,12 @@
  * 6. Daca mesajul este al meu atunci voi afisa mesajul intr-un mod diferit.
  */
 
-export function ChatMessage() {
-  return <div>ChatMessage</div>
+export function ChatMessage({ message }) {
+  return (
+    <div>
+      <p>{message.value}</p>
+      <p>{message.author}</p>
+      <p>{message.date}</p>
+    </div>
+  )
 }
