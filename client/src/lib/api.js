@@ -7,3 +7,11 @@ export async function fetchDiscussions() {
 
   return discussions
 }
+
+export async function fetchContacts() {
+  const endpoint = 'contacts'
+  const data = await fetch(`${API_BASE}/${endpoint}`)
+  const contacts = await data.json()
+
+  return contacts
+}

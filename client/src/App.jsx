@@ -6,17 +6,16 @@ import { ChatLayout } from './components/chat-layout'
 import { ChatMessageList } from './components/chat-message-list'
 import { ChatStartDiscussionModal } from './components/chat-start-discussion-modal'
 
-import { CONTACTS } from './constants/contacts'
 import { MESSAGES } from './constants/messages'
 import { USER } from './constants/user'
 
-import { fetchDiscussions } from './lib/api'
+import { fetchContacts, fetchDiscussions } from './lib/api'
 
 import './App.css'
 
 export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [contacts] = useState(CONTACTS)
+  const [contacts, setContacts] = useState([])
   const [discussions, setDiscussions] = useState([])
   const [messages, setMessages] = useState([])
   const [user] = useState(USER)
@@ -72,8 +71,14 @@ export default function App() {
     setDiscussions(data)
   }
 
+  async function loadContacts() {
+    const data = await fetchContacts()
+    setContacts(data)
+  }
+
   useEffect(() => {
     loadDiscussions()
+    loadContacts()
   }, [])
 
   return (
