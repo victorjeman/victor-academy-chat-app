@@ -29,3 +29,16 @@ export async function fetchMessages(discussionId) {
 
   return discussionContent?.messages
 }
+
+export async function postDiscussion(payload) {
+  const endpoint = 'discussions'
+  const data = await fetch(`${API_BASE}/${endpoint}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+
+  const newDiscussion = await data.json()
+
+  return newDiscussion
+}

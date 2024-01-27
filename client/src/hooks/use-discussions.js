@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { fetchDiscussions } from '../lib/api'
+import { fetchDiscussions, postDiscussion } from '../lib/api'
 
 export function useDiscussions({ user, activeContact }) {
   const [discussions, setDiscussions] = useState([])
@@ -10,16 +10,15 @@ export function useDiscussions({ user, activeContact }) {
     setDiscussions(data)
   }
 
-  function addNewDiscussion() {
-    const newDiscussionId = discussions.length + 1
-
-    const newDiscussion = {
-      id: newDiscussionId,
+  async function addNewDiscussion() {
+    const payload = {
       contacts: [
         { id: user.id, name: user.name },
-        { id: activeContact.name, name: activeContact.name },
+        { id: activeContact.id, name: activeContact.name },
       ],
     }
+
+    const newDiscussion = await postDiscussion(payload)
 
     const updatedDiscussions = [...discussions, newDiscussion]
 
