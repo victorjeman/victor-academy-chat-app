@@ -1,6 +1,6 @@
 import { clsx } from 'clsx'
 
-export function ChatControls({ setIsModalVisible, isModalVisible }) {
+export function ChatControls({ setIsModalVisible, isModalVisible, user }) {
   return (
     <div className="chat-controls">
       <button
@@ -29,6 +29,10 @@ export function ChatControls({ setIsModalVisible, isModalVisible }) {
       >
         Toggle contact list
       </button>
+
+      <p>
+        Current user: <strong>{user.name}</strong>
+      </p>
     </div>
   )
 }

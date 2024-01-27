@@ -1,20 +1,32 @@
+import { clsx } from 'clsx'
+
 import { ChatContact } from './chat-contact'
 
-/*
- * 1. O sa primesc lista de contacte prin props. O sa fie un array "contacts".
- * 2. O sa traversez lista de contacte folosind "map". contacts.map(() => {})
- * 3. O o sa afisez fiecare contact folosind componenta ChatContact
- */
-
-export function ChatContactList({ contacts }) {
+export function ChatContactList({ contacts, setActiveContact, activeContact }) {
   return (
     <div>
       <h2>My contact list</h2>
 
-      <ul>
+      <ul className="chat-contact-list">
         {contacts.map((contact) => (
-          <li key={contact.id}>
+          <li
+            key={contact.id}
+            className="chat-contact-list-item"
+          >
             <ChatContact contact={contact} />
+
+            <button
+              onClick={() => {
+                setActiveContact(contact)
+              }}
+              className={clsx(
+                'chat-contact-list-select',
+                contact.id === activeContact?.id &&
+                  'chat-contact-list-select--active'
+              )}
+            >
+              Select
+            </button>
           </li>
         ))}
       </ul>

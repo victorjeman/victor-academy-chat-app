@@ -130,3 +130,27 @@ body {
   background-color: blue;
   color: #fff;
 }
+
+/* CONTACT LIST */
+
+.chat-contact-list {
+  padding: 0;
+  list-style: none;
+}
+
+.chat-contact-list-item {
+  border: 2px solid gray;
+  margin-bottom: 16px;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-contact-list-select {
+  cursor: pointer;
+}
+
+.chat-contact-list-select--active {
+  background-color: blue;
+  color: #fff;
+}

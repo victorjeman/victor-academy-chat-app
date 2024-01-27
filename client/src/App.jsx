@@ -9,6 +9,7 @@ import { ChatStartDiscussionModal } from './components/chat-start-discussion-mod
 import { CONTACTS } from './constants/contacts'
 import { DISCUSSIONS } from './constants/discussions'
 import { MESSAGES } from './constants/messages'
+import { USER } from './constants/user'
 
 import './App.css'
 
@@ -17,6 +18,8 @@ export default function App() {
   const [contacts] = useState(CONTACTS)
   const [discussions, setDiscussions] = useState(DISCUSSIONS)
   const [messages, setMessages] = useState([])
+  const [user] = useState(USER)
+  const [activeContact, setActiveContact] = useState(null)
 
   function loadMessages(discussionId) {
     function checkDiscussionId(message) {
@@ -47,12 +50,31 @@ export default function App() {
     setDiscussions(updatedDiscussions)
   }
 
+  function addNewDiscussion() {
+    const newDiscussionId = discussions.length + 1
+
+    const newDiscussion = {
+      id: newDiscussionId,
+      contacts: [
+        { id: user.id, name: user.name },
+        { id: activeContact.name, name: activeContact.name },
+      ],
+    }
+
+    const updatedDiscussions = [...discussions, newDiscussion]
+
+    setDiscussions(updatedDiscussions)
+  }
+
   return (
     <>
       {isModalVisible && (
         <ChatStartDiscussionModal
+          setActiveContact={setActiveContact}
           onClose={setIsModalVisible}
+          addNewDiscussion={addNewDiscussion}
           contacts={contacts}
+          activeContact={activeContact}
         />
       )}
 
@@ -61,6 +83,7 @@ export default function App() {
           <ChatControls
             setIsModalVisible={setIsModalVisible}
             isModalVisible={isModalVisible}
+            user={user}
           />
         }
         aside={
