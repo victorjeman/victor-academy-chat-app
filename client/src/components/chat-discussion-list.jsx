@@ -1,7 +1,8 @@
 import { clsx } from 'clsx'
-import useSWR from 'swr'
+import useSWR, { mutate } from 'swr'
+import { AiFillDelete } from 'react-icons/ai'
 
-import { fetchDiscussions } from '../lib/api'
+import { deleteDiscussion, fetchDiscussions } from '../lib/api'
 import { useChatContext } from '../hooks/use-chat-context'
 import { ChatDiscussionContacts } from './chat-discussion-contacts'
 
@@ -9,6 +10,18 @@ export function ChatDiscussionList() {
   const { activeDiscussion, setActiveDiscussion } = useChatContext()
 
   const { data: discussions } = useSWR('discussions', fetchDiscussions)
+
+  async function handleDeleteDiscussion(id) {
+    const { error } = await deleteDiscussion(id)
+
+    if (error) {
+      // Poti arata o alerta daca stergerea nu a mers cum trebuie
+      // Dupa dau return ca sa nu se faca mutate inutil
+      return
+    }
+
+    mutate('discussions')
+  }
 
   return (
     <div className="chat-discussion-list">
@@ -31,6 +44,13 @@ export function ChatDiscussionList() {
               }}
             >
               <ChatDiscussionContacts contacts={discussion.contacts} />
+            </button>
+
+            <button
+              className="chat-discussion-list-delete"
+              onClick={() => handleDeleteDiscussion(discussion.id)}
+            >
+              <AiFillDelete />
             </button>
           </li>
         ))}

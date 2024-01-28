@@ -112,6 +112,8 @@ body {
 
 .chat-discussion-list-item {
   margin-bottom: var(--space-sm);
+  display: flex;
+  gap: var(--space-sm);
 }
 
 .chat-discussion-list-item--active {
@@ -120,10 +122,17 @@ body {
 }
 
 .chat-discussion-list-button {
-  width: 100%;
+  width: 80%;
   cursor: pointer;
   border: 1px solid var(--color-gray);
   padding: var(--space-sm);
+}
+
+.chat-discussion-list-delete {
+  border: 1px solid var(--color-gray);
+  padding: var(--space-sm);
+  width: 20%;
+  cursor: pointer;
 }
 
 .chat-discussion-list-button:hover {

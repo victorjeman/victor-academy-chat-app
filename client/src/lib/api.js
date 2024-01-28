@@ -44,3 +44,18 @@ export async function postDiscussion(payload) {
     return { discussion: null, error }
   }
 }
+
+export async function deleteDiscussion(discussionId) {
+  try {
+    const endpoint = 'discussions'
+    const data = await fetch(`${API_BASE}/${endpoint}/${discussionId}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    const discussion = await data.json()
+    return { discussion, error: null }
+  } catch (error) {
+    return { discussion: null, error }
+  }
+}
