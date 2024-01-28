@@ -2,7 +2,6 @@ import { createContext, useState } from 'react'
 
 import { USER } from '../constants/user'
 
-import { useContacts } from '../hooks/use-contacts'
 import { useMessages } from '../hooks/use-messages'
 import { useDiscussions } from '../hooks/use-discussions'
 
@@ -13,7 +12,6 @@ export function ChatProvider({ children }) {
   const [user] = useState(USER)
   const [activeContact, setActiveContact] = useState(null)
 
-  const { contacts } = useContacts()
   const { messages, loadMessages } = useMessages()
   const { discussions, setDiscussions, addNewDiscussion, highlightDiscussion } =
     useDiscussions({
@@ -27,7 +25,6 @@ export function ChatProvider({ children }) {
         user,
         isModalVisible,
         activeContact,
-        contacts,
         messages,
         discussions,
         setIsModalVisible,

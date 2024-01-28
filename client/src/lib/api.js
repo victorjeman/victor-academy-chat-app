@@ -8,8 +8,7 @@ export async function fetchDiscussions() {
   return discussions
 }
 
-export async function fetchContacts() {
-  const endpoint = 'contacts'
+export async function fetchContacts(endpoint) {
   const data = await fetch(`${API_BASE}/${endpoint}`)
   const contacts = await data.json()
 
