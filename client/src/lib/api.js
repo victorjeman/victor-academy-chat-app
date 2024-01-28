@@ -14,13 +14,14 @@ export async function fetchContacts(endpoint) {
   return contacts
 }
 
-export async function fetchMessages(discussionId) {
-  const endpoint = 'messages'
+export async function fetchMessages(endpoint, discussionId) {
   const data = await fetch(`${API_BASE}/${endpoint}`)
   const allMessages = await data.json()
 
+  // TIP: Sometimes json-server send ids as string instead of number
+  // That is why I use == instead of ===
   function checkDiscussionId(message) {
-    return message.discussionId === discussionId
+    return message.discussionId == discussionId
   }
 
   const discussionContent = allMessages.find(checkDiscussionId)
