@@ -1,17 +1,21 @@
 import { clsx } from 'clsx'
+import useSWR from 'swr'
 
+import { fetchDiscussions } from '../lib/api'
 import { useChatContext } from '../hooks/use-chat-context'
 import { ChatDiscussionContacts } from './chat-discussion-contacts'
 
 export function ChatDiscussionList() {
-  const { discussions, loadMessages, highlightDiscussion } = useChatContext()
+  const { loadMessages } = useChatContext()
+
+  const { data: discussions } = useSWR('discussions', fetchDiscussions)
 
   return (
     <div className="chat-discussion-list">
       <h3>My discussions</h3>
 
       <ul className="chat-discussion-list-items">
-        {discussions.map((discussion) => (
+        {discussions?.map((discussion) => (
           <li
             key={discussion.id}
             className="chat-discussion-list-item"
@@ -23,7 +27,6 @@ export function ChatDiscussionList() {
               )}
               onClick={() => {
                 loadMessages(discussion.id)
-                highlightDiscussion(discussion.id)
               }}
             >
               <ChatDiscussionContacts contacts={discussion.contacts} />
