@@ -6,7 +6,8 @@ import { useChatContext } from '../hooks/use-chat-context'
 import { ChatDiscussionContacts } from './chat-discussion-contacts'
 
 export function ChatDiscussionList() {
-  const { loadMessages } = useChatContext()
+  const { loadMessages, activeDiscussion, setActiveDiscussion } =
+    useChatContext()
 
   const { data: discussions } = useSWR('discussions', fetchDiscussions)
 
@@ -23,10 +24,12 @@ export function ChatDiscussionList() {
             <button
               className={clsx(
                 'chat-discussion-list-button',
-                discussion.isActive && 'chat-discussion-list-item--active'
+                discussion.id === activeDiscussion?.id &&
+                  'chat-discussion-list-item--active'
               )}
               onClick={() => {
                 loadMessages(discussion.id)
+                setActiveDiscussion(discussion)
               }}
             >
               <ChatDiscussionContacts contacts={discussion.contacts} />

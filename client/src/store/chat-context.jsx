@@ -10,6 +10,7 @@ export function ChatProvider({ children }) {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [user] = useState(USER)
   const [activeContact, setActiveContact] = useState(null)
+  const [activeDiscussion, setActiveDiscussion] = useState(null)
 
   const { messages, loadMessages } = useMessages()
 
@@ -19,9 +20,11 @@ export function ChatProvider({ children }) {
         user,
         isModalVisible,
         activeContact,
+        activeDiscussion,
         messages,
         setIsModalVisible,
         setActiveContact,
+        setActiveDiscussion,
         loadMessages,
       }}
     >
