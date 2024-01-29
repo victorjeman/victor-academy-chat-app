@@ -1,10 +1,10 @@
 import { useAtom } from 'jotai'
-import { Avatar, Switch } from '@nextui-org/react'
+import { Avatar } from '@nextui-org/react'
 
-import { isModalVisibleAtom, userAtom } from '../store/store'
+import { userAtom } from '../store/store'
+import { ChatToggleContacts } from './chat-toggle-contacts'
 
 export function ChatControls() {
-  const [isModalVisible, setIsModalVisible] = useAtom(isModalVisibleAtom)
   const [user] = useAtom(userAtom)
 
   return (
@@ -21,13 +21,7 @@ export function ChatControls() {
         Welcome <strong>{user.name}</strong>
       </p>
 
-      <Switch
-        defaultSelected
-        onValueChange={setIsModalVisible}
-        isSelected={isModalVisible}
-      >
-        Toggle contact list
-      </Switch>
+      <ChatToggleContacts />
     </header>
   )
 }
