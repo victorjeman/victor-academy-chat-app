@@ -1,3 +1,1 @@
-import { CONTACTS } from './contacts'
-
-export const USER = CONTACTS[4]
+export const USER = { id: 5, name: 'Emily Davis' }

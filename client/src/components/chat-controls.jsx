@@ -1,5 +1,6 @@
 import { useAtom } from 'jotai'
 import { clsx } from 'clsx'
+import { Button } from '@nextui-org/react'
 
 import { isModalVisibleAtom, userAtom } from '../store/store'
 
@@ -27,16 +28,11 @@ export function ChatControls() {
         Show contact list
       </button>
 
-      <button
-        className="chat-controls-btn"
-        onClick={() => {
-          setIsModalVisible((prev) => !prev)
-        }}
-      >
+      <Button onClick={() => setIsModalVisible((prev) => !prev)}>
         Toggle contact list
-      </button>
+      </Button>
 
-      <p>
+      <p className="text-blue-800 text-xl">
         Current user: <strong>{user.name}</strong>
       </p>
     </div>
