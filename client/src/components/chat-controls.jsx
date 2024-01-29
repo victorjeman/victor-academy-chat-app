@@ -1,6 +1,5 @@
 import { useAtom } from 'jotai'
-import { clsx } from 'clsx'
-import { Button } from '@nextui-org/react'
+import { Avatar, Switch } from '@nextui-org/react'
 
 import { isModalVisibleAtom, userAtom } from '../store/store'
 
@@ -9,32 +8,26 @@ export function ChatControls() {
   const [user] = useAtom(userAtom)
 
   return (
-    <div className="chat-controls">
-      <button
-        className={clsx('chat-controls-btn', !isModalVisible && 'is-active')}
-        onClick={() => {
-          setIsModalVisible(false)
-        }}
-      >
-        Hide contact list
-      </button>
+    <header className="flex justify-between items-center bg-gray-100 px-4 py-3 rounded-lg">
+      <Avatar
+        name={user.name}
+        src={user.imageUrl}
+        showFallback
+        radius="md"
+        size="lg"
+      />
 
-      <button
-        className={clsx('chat-controls-btn', isModalVisible && 'is-active')}
-        onClick={() => {
-          setIsModalVisible(true)
-        }}
-      >
-        Show contact list
-      </button>
-
-      <Button onClick={() => setIsModalVisible((prev) => !prev)}>
-        Toggle contact list
-      </Button>
-
-      <p className="text-blue-800 text-xl">
-        Current user: <strong>{user.name}</strong>
+      <p>
+        Welcome <strong>{user.name}</strong>
       </p>
-    </div>
+
+      <Switch
+        defaultSelected
+        onValueChange={setIsModalVisible}
+        isSelected={isModalVisible}
+      >
+        Toggle contact list
+      </Switch>
+    </header>
   )
 }
