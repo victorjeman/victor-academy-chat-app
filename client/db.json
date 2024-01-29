@@ -1,30 +1,64 @@
 {
   "contacts": [
-    { "id": 1, "name": "John Doe" },
-    { "id": 2, "name": "Jane Smith" },
-    { "id": 3, "name": "Robert Johnson" },
-    { "id": 4, "name": "Michael Brown" },
-    { "id": 5, "name": "Emily Davis" },
-    { "id": 6, "name": "Sarah Miller" }
+    {
+      "id": 1,
+      "name": "John Doe",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026024d"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026704d"
+    },
+    {
+      "id": 3,
+      "name": "Robert Johnson",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026024d"
+    },
+    {
+      "id": 4,
+      "name": "Michael Brown",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026704d"
+    },
+    {
+      "id": 5,
+      "name": "Emily Davis",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026024d"
+    },
+    {
+      "id": 6,
+      "name": "Sarah Miller",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026704d"
+    }
   ],
-
   "discussions": [
     {
       "id": 0,
       "contacts": [
-        { "id": 0, "name": "John Doe" },
-        { "id": 5, "name": "Emily Davis" }
+        {
+          "id": 0,
+          "name": "John Doe"
+        },
+        {
+          "id": 5,
+          "name": "Emily Davis"
+        }
       ]
     },
     {
       "id": 1,
       "contacts": [
-        { "id": 0, "name": "Emily Davis" },
-        { "id": 5, "name": "Sarah Miller" }
+        {
+          "id": 0,
+          "name": "Emily Davis"
+        },
+        {
+          "id": 5,
+          "name": "Sarah Miller"
+        }
       ]
     }
   ],
-
   "messages": [
     {
       "id": 0,
