@@ -1,11 +1,12 @@
 import useSWR from 'swr'
+import { useAtom } from 'jotai'
 
+import { activeDiscussionAtom } from '../store/store'
 import { fetchMessages } from '../lib/api'
 import { ChatMessage } from './chat-message'
-import { useChatContext } from '../hooks/use-chat-context'
 
 export function ChatMessageList() {
-  const { activeDiscussion } = useChatContext()
+  const [activeDiscussion] = useAtom(activeDiscussionAtom)
 
   const { data: messages } = useSWR(
     () => `messages ${activeDiscussion?.id}`,

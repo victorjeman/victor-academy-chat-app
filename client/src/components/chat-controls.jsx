@@ -1,9 +1,11 @@
+import { useAtom } from 'jotai'
 import { clsx } from 'clsx'
 
-import { useChatContext } from '../hooks/use-chat-context'
+import { isModalVisibleAtom, userAtom } from '../store/store'
 
 export function ChatControls() {
-  const { setIsModalVisible, isModalVisible, user } = useChatContext()
+  const [isModalVisible, setIsModalVisible] = useAtom(isModalVisibleAtom)
+  const [user] = useAtom(userAtom)
 
   return (
     <div className="chat-controls">

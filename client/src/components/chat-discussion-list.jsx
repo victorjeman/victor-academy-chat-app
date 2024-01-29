@@ -1,13 +1,14 @@
-import { clsx } from 'clsx'
-import useSWR, { mutate } from 'swr'
 import { AiFillDelete } from 'react-icons/ai'
+import { clsx } from 'clsx'
+import { useAtom } from 'jotai'
+import useSWR, { mutate } from 'swr'
 
+import { activeDiscussionAtom } from '../store/store'
 import { deleteDiscussion, fetchDiscussions } from '../lib/api'
-import { useChatContext } from '../hooks/use-chat-context'
 import { ChatDiscussionContacts } from './chat-discussion-contacts'
 
 export function ChatDiscussionList() {
-  const { activeDiscussion, setActiveDiscussion } = useChatContext()
+  const [activeDiscussion, setActiveDiscussion] = useAtom(activeDiscussionAtom)
 
   const { data: discussions } = useSWR('discussions', fetchDiscussions)
 

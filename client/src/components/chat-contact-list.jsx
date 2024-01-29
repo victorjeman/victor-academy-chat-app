@@ -1,13 +1,13 @@
+import { useAtom } from 'jotai'
 import { clsx } from 'clsx'
 import useSWR from 'swr'
 
-import { useChatContext } from '../hooks/use-chat-context'
+import { activeContactAtom } from '../store/store'
 import { ChatContact } from './chat-contact'
 import { fetchContacts } from '../lib/api'
 
 export function ChatContactList() {
-  const { setActiveContact, activeContact } = useChatContext()
-
+  const [activeContact, setActiveContact] = useAtom(activeContactAtom)
   const { data: contacts } = useSWR('contacts', fetchContacts)
 
   return (

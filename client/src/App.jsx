@@ -4,22 +4,18 @@ import { ChatLayout } from './components/chat-layout'
 import { ChatMessageList } from './components/chat-message-list'
 import { ChatStartDiscussionModal } from './components/chat-start-discussion-modal'
 
-import { ChatProvider } from './store/chat-context'
-
 import './App.css'
 
 export default function App() {
   return (
-    <ChatProvider>
-      <>
-        <ChatStartDiscussionModal />
+    <>
+      <ChatStartDiscussionModal />
 
-        <ChatLayout
-          controls={<ChatControls />}
-          aside={<ChatDiscussionList />}
-          main={<ChatMessageList />}
-        />
-      </>
-    </ChatProvider>
+      <ChatLayout
+        controls={<ChatControls />}
+        aside={<ChatDiscussionList />}
+        main={<ChatMessageList />}
+      />
+    </>
   )
 }

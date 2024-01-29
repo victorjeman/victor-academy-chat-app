@@ -1,10 +1,14 @@
 import { useSWRConfig } from 'swr'
+import { useAtom } from 'jotai'
 
-import { useChatContext } from '../hooks/use-chat-context'
+import { activeContactAtom, isModalVisibleAtom, userAtom } from '../store/store'
 import { postDiscussion } from '../lib/api'
 
 export function ChatStartDiscussionButton() {
-  const { setIsModalVisible, activeContact, user } = useChatContext()
+  const [, setIsModalVisible] = useAtom(isModalVisibleAtom)
+  const [activeContact] = useAtom(activeContactAtom)
+  const [user] = useAtom(userAtom)
+
   const { mutate } = useSWRConfig()
 
   async function startDiscussion() {
