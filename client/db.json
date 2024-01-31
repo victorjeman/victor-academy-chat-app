@@ -75,6 +75,18 @@
           "value": "Hey, bine, uite ma uitam la un film,  la tine cum e?",
           "date": "Tue 23 Jan, 15:52",
           "author": "Emily Davis"
+        },
+        {
+          "id": 2,
+          "value": "Am senzatia ca nu am mai povestit de o vesnicie!",
+          "date": "Tue 23 Jan, 15:52",
+          "author": "Emily Davis"
+        },
+        {
+          "id": 3,
+          "value": "Nu pot sa ma plang! Treburile merg bine, am avut o perioada mai aglomerata, dar acum e mai bine.",
+          "date": "Tue 23 Jan, 15:53",
+          "author": "John Doe"
         }
       ]
     },

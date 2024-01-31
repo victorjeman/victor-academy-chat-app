@@ -25,20 +25,19 @@ export function ChatDiscussionList() {
   }
 
   return (
-    <div className="chat-discussion-list">
-      <h3>My discussions</h3>
+    <div className="">
+      <h3 className="text-xl text-g">My discussions</h3>
 
-      <ul className="chat-discussion-list-items">
+      <ul className="">
         {discussions?.map((discussion) => (
           <li
             key={discussion.id}
-            className="chat-discussion-list-item"
+            className="flex justify-between items-stretch mt-3 border-1 rounded-md"
           >
             <button
               className={clsx(
-                'chat-discussion-list-button',
-                discussion.id === activeDiscussion?.id &&
-                  'chat-discussion-list-item--active'
+                'flex p-2 hover:bg-gray-100 grow',
+                discussion.id === activeDiscussion?.id && 'bg-blue-200'
               )}
               onClick={() => {
                 setActiveDiscussion(discussion)
@@ -48,7 +47,7 @@ export function ChatDiscussionList() {
             </button>
 
             <button
-              className="chat-discussion-list-delete"
+              className="px-4 hover:bg-red-100"
               onClick={() => handleDeleteDiscussion(discussion.id)}
             >
               <AiFillDelete />
