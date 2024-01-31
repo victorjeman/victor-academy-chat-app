@@ -1,11 +1,11 @@
 export function ChatLayout({ controls, aside, main }) {
   return (
-    <div className="chat-layout">
+    <div className="p-4 flex flex-col h-full">
       {controls}
 
-      <div className="chat-layout-content">
-        <div className="chat-layout-aside">{aside}</div>
-        <div className="chat-layout-main">{main}</div>
+      <div className="mt-4 flex flex-grow padding-4 gap-4 border-2 p-4">
+        <div className="border-2 p-4 basis-80">{aside}</div>
+        <div className="border-2 p-4 flex-grow">{main}</div>
       </div>
     </div>
   )
