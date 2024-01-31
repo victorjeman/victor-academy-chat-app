@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai'
+import clsx from 'clsx'
 
 import { userAtom } from '../store/store'
-import clsx from 'clsx'
 
 export function ChatMessage({ message }) {
   const [user] = useAtom(userAtom)
@@ -10,10 +10,12 @@ export function ChatMessage({ message }) {
   return (
     <div
       className={clsx(
-        isCurrentUser ? 'flex flex-row-reverse pr-[20%]' : 'pl-[20%]'
+        isCurrentUser
+          ? 'flex flex-row-reverse pr-[5%] md:pr-[10%] lg:pr-[15%]'
+          : 'pl-[5%] md:pl-[10%] lg:pl-[15%]'
       )}
     >
-      <div className="w-full max-w-[55%]">
+      <div className="w-full max-w-[80%] md:max-w-[70%] lg:max-w-[65%]">
         <div
           className={clsx(
             'leading-1.5 rounded-md mt-8 p-4',
