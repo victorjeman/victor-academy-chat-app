@@ -1,21 +1,17 @@
 import useSWR from 'swr'
-import { useAtom } from 'jotai'
 
-import { activeDiscussionAtom } from '../store/store'
 import { fetchMessages } from '../lib/api'
 import { ChatMessage } from './chat-message'
 
 export function ChatMessageList() {
-  const [activeDiscussion] = useAtom(activeDiscussionAtom)
-
   const { data: messages } = useSWR(
-    () => `messages ${activeDiscussion?.id}`,
-    () => fetchMessages('messages', activeDiscussion.id),
+    () => `messages`,
+    () => fetchMessages('messages'),
     { dedupingInterval: 10000 }
   )
 
   return (
-    <div>
+    <div className="flex-grow overflow-y-auto">
       {messages?.map((message) => (
         <ChatMessage
           key={message.id}

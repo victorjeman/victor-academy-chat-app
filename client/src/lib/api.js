@@ -14,19 +14,10 @@ export async function fetchContacts(endpoint) {
   return contacts
 }
 
-export async function fetchMessages(endpoint, discussionId) {
+export async function fetchMessages(endpoint) {
   const data = await fetch(`${API_BASE}/${endpoint}`)
-  const allMessages = await data.json()
-
-  // TIP: Sometimes json-server send ids as string instead of number
-  // That is why I use == instead of ===
-  function checkDiscussionId(message) {
-    return message.discussionId == discussionId
-  }
-
-  const discussionContent = allMessages.find(checkDiscussionId)
-
-  return discussionContent?.messages
+  const messages = await data.json()
+  return messages
 }
 
 export async function postDiscussion(payload) {
@@ -51,6 +42,22 @@ export async function deleteDiscussion(discussionId) {
     const data = await fetch(`${API_BASE}/${endpoint}/${discussionId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
+    })
+
+    const discussion = await data.json()
+    return { discussion, error: null }
+  } catch (error) {
+    return { discussion: null, error }
+  }
+}
+
+export async function postMessage(payload) {
+  try {
+    const endpoint = 'messages'
+    const data = await fetch(`${API_BASE}/${endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
     })
 
     const discussion = await data.json()

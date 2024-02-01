@@ -1,39 +1,39 @@
 {
   "contacts": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Doe",
       "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026024d"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Jane Smith",
       "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026704d"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Robert Johnson",
       "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026024d"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Michael Brown",
       "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026704d"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Emily Davis",
       "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026024d"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Sarah Miller",
       "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026704d"
     }
   ],
   "discussions": [
     {
-      "id": 0,
+      "id": "0",
       "contacts": [
         {
           "id": 0,
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": "1",
       "contacts": [
         {
           "id": 0,
@@ -57,56 +57,58 @@
           "name": "Sarah Miller"
         }
       ]
-    }
-  ],
-  "messages": [
+    },
     {
-      "id": 0,
-      "discussionId": 0,
-      "messages": [
+      "id": "2e5e",
+      "contacts": [
         {
-          "id": 0,
-          "value": "Salut Ce mai faci?",
-          "date": "Tue 23 Jan, 15:50",
-          "author": "John Doe"
+          "id": "4",
+          "name": "Michael Brown"
         },
         {
-          "id": 1,
-          "value": "Hey, bine, uite ma uitam la un film,  la tine cum e?",
-          "date": "Tue 23 Jan, 15:52",
-          "author": "Emily Davis"
-        },
-        {
-          "id": 2,
-          "value": "Am senzatia ca nu am mai povestit de o vesnicie!",
-          "date": "Tue 23 Jan, 15:52",
-          "author": "Emily Davis"
-        },
-        {
-          "id": 3,
-          "value": "Nu pot sa ma plang! Treburile merg bine, am avut o perioada mai aglomerata, dar acum e mai bine.",
-          "date": "Tue 23 Jan, 15:53",
-          "author": "John Doe"
+          "id": 5,
+          "name": "Emily Davis"
         }
       ]
     },
     {
-      "id": 1,
-      "discussionId": 1,
-      "messages": [
+      "id": "4df4",
+      "contacts": [
         {
-          "id": 0,
-          "value": "Salut Emily, Ce mai faci?",
-          "date": "Tue 23 Jan, 16:50",
-          "author": "Sarah Miller"
+          "id": "4",
+          "name": "Michael Brown"
         },
         {
-          "id": 1,
-          "value": "Hey Sarah, bine, uite ma uitam la un film, la tine cum e?",
-          "date": "Tue 23 Jan, 16:52",
-          "author": "Emily Davis"
+          "id": 5,
+          "name": "Emily Davis"
         }
       ]
+    }
+  ],
+  "messages": [
+    {
+      "id": "0",
+      "value": "Salut Ce mai faci?",
+      "date": "Tue 23 Jan, 15:50",
+      "author": "John Doe"
+    },
+    {
+      "id": "1",
+      "value": "Hey, bine, uite ma uitam la un film,  la tine cum e?",
+      "date": "Tue 23 Jan, 15:52",
+      "author": "Emily Davis"
+    },
+    {
+      "id": "2",
+      "value": "Am senzatia ca nu am mai povestit de o vesnicie!",
+      "date": "Tue 23 Jan, 15:52",
+      "author": "Emily Davis"
+    },
+    {
+      "id": "3",
+      "value": "Nu pot sa ma plang! Treburile merg bine, am avut o perioada mai aglomerata, dar acum e mai bine.",
+      "date": "Tue 23 Jan, 15:53",
+      "author": "John Doe"
     }
   ]
 }
