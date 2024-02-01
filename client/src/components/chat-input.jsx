@@ -1,29 +1,34 @@
 import { useState } from 'react'
 import { Button, Input } from '@nextui-org/react'
 import { useAtom } from 'jotai'
-import { mutate } from 'swr'
+import useWebSocket from 'react-use-websocket'
+import { useSWRConfig } from 'swr'
 
-import { postMessage } from '../lib/api'
 import { userAtom } from '../store/store'
+import { WS_URL } from '../constants/api-constants'
 
 export function ChatInput() {
   const [user] = useAtom(userAtom)
+  const { mutate } = useSWRConfig()
+
   const [message, setMessage] = useState('')
 
-  async function sendMessage() {
+  const { sendJsonMessage } = useWebSocket(WS_URL, {
+    onMessage: () => {
+      mutate('messages')
+    },
+  })
+
+  function sendMessage() {
     const payload = {
       value: message,
       date: new Date().toISOString(),
       author: user.name,
     }
 
-    const { error } = await postMessage(payload)
-
-    if (error) return
-
-    setMessage('')
-    mutate('messages')
+    sendJsonMessage(payload)
   }
+
   return (
     <div className="flex items-stretch gap-5 mt-6">
       <Input
