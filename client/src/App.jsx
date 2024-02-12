@@ -1,9 +1,7 @@
-import { ChatContact } from './components/chat-contact'
-
 export default function App() {
   return (
     <div>
-      <ChatContact />
+      <h1>Aplicatia mea React</h1>
     </div>
   )
 }
